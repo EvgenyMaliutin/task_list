@@ -1,0 +1,10 @@
+@startuml
+component [Srever] as Server
+component [Cache] as Cache
+component [Storage] as Storage
+component [Database] as Database
+
+Server -down-> Cache
+Server -up-> Storage
+Server -> Database
+@enduml

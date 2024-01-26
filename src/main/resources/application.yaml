@@ -1,0 +1,62 @@
+# Конфигурация Spring
+spring:
+  # подключение импорта данных из файла .env
+  config:
+    import: optional:file:.env[.properties]
+  # Настройка кеширования
+  cache:
+    type: redis
+    cache-names: redis-cache
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: 6379
+      password: ${REDIS_PASSWORD}
+  # Конфигурация подключения к базе данных
+  datasource:
+    url: jdbc:postgresql://${HOST}:5432/${POSTGRES_DATABASE}?currentSchema=${POSTGRES_SCHEMA}
+    username: ${POSTGRES_USERNAME}
+    password: ${POSTGRES_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  #      data-locations: classpath:demo_data.sql
+  # Конфигурация liquibase (позволяет создать таблицы в указанной схеме БД из SQL скриптов)
+  liquibase:
+    change-log: classpath:liquibase/db.changelog.yaml
+    enabled: true
+    default-schema: tasklist
+  # Конфигурация почтового сервиса
+  mail:
+    host: ${SPRING_MAIL_HOST}
+    port: ${SPRING_MAIL_PORT}
+    username: ${SPRING_MAIL_USERNAME}
+    password: ${SPRING_MAIL_PASSWORD}
+    properties:
+      mail:
+        debug: false
+        transport:
+          protocol: smtp
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  # Конфигурация graphql
+  graphql:
+    graphiql:
+      enabled: true
+# Конфигурация Spring Security
+security:
+  # Конфигурация Jwt токенов (секретный ключ, время жизни короткоживущего и долгоживущего токенов)
+  jwt:
+    secret: ${JWT_SECRET}
+    access: 1
+    refresh: 30
+# Конфигурация документации Swagger (отключение вывода ошибок при запросах в документации)
+springdoc:
+  override-with-generic-response: false
+
+# Конфигурация minio
+minio:
+  bucket: ${MINIO_BUCKET}
+  url: ${MINIO_URL}
+  accessKey: ${MINIO_ACCESS_KEY}
+  secretKey: ${MINIO_SECRET_KEY}
