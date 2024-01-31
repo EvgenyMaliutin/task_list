@@ -1,8 +1,8 @@
 # Tasklist
 
-This application helps you organize creating and accessing tasks for users.
+Это приложение помогает вам организовать создание задач и доступ к ним для пользователей.
 
-You can access Swagger and see all available endpoints by visiting `http://localhost:8080/swagger-ui/index.html`
+Вы можете получить доступ к Swagger и просмотреть все доступные конечные точки, посетив `http://localhost:8080/swagger-ui/index.html`
 
 ## Sequence diagram
 
@@ -12,25 +12,25 @@ You can access Swagger and see all available endpoints by visiting `http://local
 
 ![Component diagram](docs/component-diagram.png)
 
-Main application communicates with cache (we use Redis), database (we use Postgresql), storage (we use MinIO).
+Основное приложение взаимодействует с кешем (Redis), базой данных (Postgresql), хранилищем (MinIO).
 
 ## Class diagram
 
 ![Class diagram](docs/class-diagram.png)
 
-We have two main classes - **User** and **Task**.
+В приложении два главных класса - **User** и **Task**.
 
-**User** class represents user in this application. User can login, create and update tasks.
+**User** класс представляет пользователя в этом приложении. Пользователь может входить в систему, создавать и обновлять задачи.
 
-User can have roles - `ROLE_USER` or `ROLE_ADMIN`.
+User может иметь роли - `ROLE_USER` или `ROLE_ADMIN`.
 
-**Task** class represents task in this application. Task can be created by user.
+**Task** класс представляет задачу в этом приложении. Задачу может создать пользователь.
 
-Task can have images.
+Task может иметь изображения.
 
 ## Environments
 
-To run this application you need to create `.env` file in root directory with next environments:
+Для запуска этого приложения создайте `.env` файл в корневой директории и заполните переменные среды:
 
 - `HOST` - host of Postgresql database
 - `POSTGRES_USERNAME` - username for Postgresql database
@@ -44,8 +44,3 @@ To run this application you need to create `.env` file in root directory with ne
 - `MINIO_URL` - URL of MinIO instance
 - `MINIO_ACCESS_KEY` - access key of MinIO
 - `MINIO_SECRET_KEY` - secret key of MinIO
-
-## Guide
-
-You can find step-by-step creating of this
-project [here](https://www.youtube.com/playlist?list=PL3Ur78l82EFD8OKSulH3NaK1As4G7YWMJ).
